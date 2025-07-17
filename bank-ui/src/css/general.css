@@ -1,0 +1,195 @@
+.nav-logo{
+    height: 60px;
+  width: auto;
+}
+
+.sidebar-logo{
+    height: 30px;
+  width: auto;
+}
+
+.navbar {
+    background-color: #ffffff;
+}
+.container-fluid { /* Example class, adjust to your actual top-level wrapper */
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+html, body, #root {
+    min-height: 100vh; /* Ensures it covers the full viewport height */
+    background-color: #e8e8e8; /* A light grey color, replace with your desired hex, rgb, or named color */
+    margin: 0; /* Remove default browser margins */
+    padding: 0; /* Remove default browser padding */
+    font-family: 'Inter', sans-serif; /* Keep your preferred font */
+}
+
+.profile{
+    background-image: linear-gradient(
+        to right,
+        #df0060,
+        #b10075,
+        #5e0289,
+        #1b008e,
+        #00006b
+    );
+    -webkit-background-clip: text; /* For WebKit browsers */
+    background-clip: text;
+    -webkit-text-fill-color: transparent; /* Makes the text transparent so the background shows through */
+    color: transparent;
+}
+
+.profile .dropdown-item{
+    background-image: linear-gradient(
+        to right,
+        #df0060,
+        #b10075,
+        #5e0289,
+        #1b008e,
+        #00006b
+    );
+    -webkit-background-clip: text; /* For WebKit browsers */
+    background-clip: text;
+    -webkit-text-fill-color: transparent; /* Makes the text transparent so the background shows through */
+    color: transparent;
+}
+
+
+.nav-title .nav-link {
+    /* To apply a gradient to text color, use background-image and background-clip: text */
+    background-image: linear-gradient(
+        to right,
+        #df0060,
+        #b10075,
+        #5e0289,
+        #1b008e,
+        #00006b
+    );
+    -webkit-background-clip: text; /* For WebKit browsers */
+    background-clip: text;
+    -webkit-text-fill-color: transparent; /* Makes the text transparent so the background shows through */
+    color: transparent; /* Fallback for browsers that don't support -webkit-text-fill-color */
+/* Example: Bootstrap's primary blue color for links */
+    font-family: 'Arial', sans-serif; /* Example: Change font family */
+    font-size: 1.1rem; /* Example: Slightly larger font size */
+    font-weight: 600; /* Example: Make it semi-bold */
+    text-decoration: none; /* Ensure no underline by default */
+    transition: color 0.3s ease-in-out, font-size 0.3s ease-in-out; /* Smooth transition for hover effects */
+}
+
+/* Hover effect */
+.nav-title .nav-link:hover {
+    font-size: 1.15rem; /* Slightly grow on hover */
+}
+
+.navbar-brand .nav-title,
+.title-account,
+.transaction-heading{
+    background-image: linear-gradient(
+        to right,
+        #df0060,
+        #b10075,
+        #5e0289,
+        #1b008e,
+        #00006b
+    );
+    -webkit-background-clip: text; /* For WebKit browsers */
+    background-clip: text;
+    -webkit-text-fill-color: transparent; /* Makes the text transparent so the background shows through */
+    color: transparent;
+}
+
+/*Loan*/
+.loan-scroll-container {
+    max-height: calc(100vh - 290px);
+    overflow-y: auto;
+    padding-right: 10px;
+}
+
+.manage-scroll-container {
+    max-height: calc(100vh - 170px);
+    overflow-y: auto;
+    padding-right: 10px;
+}
+
+.Apply-title,
+.Application-title,
+.beneficiary-title,
+.myloan-title,
+.createAcc-title,
+.Loan-title,
+.main-title,
+.mybranch-title{
+    background-image: linear-gradient(
+        to right,
+        #df0060,
+        #b10075,
+        #5e0289,
+        #1b008e,
+        #00006b
+    );
+    -webkit-background-clip: text; /* For WebKit browsers */
+    background-clip: text;
+    -webkit-text-fill-color: transparent; /* Makes the text transparent so the background shows through */
+    color: transparent;
+}
+
+.loan-card,
+.mybranch-card {
+    position: relative;
+    padding: 16px;
+    border-radius: 8px;
+    background: white;
+    transition: box-shadow 0.3s ease;
+    overflow: hidden;
+}
+
+.loan-card::before,
+.mybranch-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 6px;
+    height: 100%;
+    background: linear-gradient(
+        to bottom,
+        #df0060,
+        #b10075,
+        #5e0289,
+        #1b008e,
+        #00006b
+    );
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+}
+  
+.loan-card:hover
+.mybranch-card:hover {
+    box-shadow: 0 0 10px rgba(13, 110, 253, 0.3);
+}
+
+/* Center DataTable headers */
+.p-datatable .p-column-header-content {
+    justify-content: center !important;
+}
+
+/* ensure cell content is also centered */
+.p-datatable .p-cell-content {
+    justify-content: center !important;
+    display: flex;
+    align-items: center;
+}
+
+/* Add border around the entire PrimeReact table */
+.p-datatable {
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/*Add border to rows */
+.p-datatable .p-datatable-tbody > tr {
+    border-bottom: 1px solid #dee2e6;
+}

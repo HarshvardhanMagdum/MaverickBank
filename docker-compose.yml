@@ -1,0 +1,64 @@
+version: '3.8' # Still good to specify, though ignored by newer Docker Compose versions
+
+services:
+  # Service for MySQL Database
+  db: # Renamed from 'mysql' to 'db' to match your previous config, but 'mysql' is also fine
+    image: mysql:8.0 # Using mysql:8.0 as per your friend's example, but specific version is better
+    container_name: bank_mysql_container # Explicit container name for easier identification
+    environment:
+      MYSQL_ROOT_PASSWORD: MySQL_566@Sree # Your project's root password
+      MYSQL_DATABASE: bank_demo_db # Your project's database name
+      # REMOVED: MYSQL_USER: root # This is not needed when MYSQL_ROOT_PASSWORD is set
+    ports:
+      - "3307:3306" # Mapped host port 3307 to container port 3306 to avoid conflict
+    volumes:
+      - db_data:/var/lib/mysql # Persist database data
+    healthcheck: # Excellent addition from your friend's config!
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-pMySQL_566@Sree"] # Added credentials for ping
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - app-network # Using your network name 'app-network'
+
+  # Service for the Spring Boot Backend
+  backend:
+    build:
+      context: ./bankDemo
+      dockerfile: Dockerfile
+    container_name: bank_backend_container # Explicit container name
+    ports:
+      - "8080:8080"
+    environment:
+      # These environment variables will override application.properties for database connection
+      # This is often preferred in Docker for flexibility and runtime configuration
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/bank_demo_db?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: MySQL_566@Sree
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+    depends_on:
+      db:
+        condition: service_healthy # Crucial: Wait until the database is truly healthy, not just started
+    networks:
+      - app-network
+
+  # Service for the React Frontend
+  frontend:
+    build:
+      context: ./bank-ui
+      dockerfile: Dockerfile
+    container_name: bank_frontend_container # Explicit container name
+    ports:
+      - "5173:80" # Your desired frontend port
+    depends_on:
+      - backend # Frontend still depends on backend (no healthcheck needed here typically)
+    networks:
+      - app-network
+
+# Define named volume for database persistence
+volumes:
+  db_data: # Using your volume name 'db_data'
+
+# Define custom network for services to communicate
+networks:
+  app-network: # Using your network name 'app-network'

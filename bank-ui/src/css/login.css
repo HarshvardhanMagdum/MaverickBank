@@ -1,0 +1,72 @@
+.login-container-fluid {
+    position: relative;
+    overflow-x: hidden;
+    background: linear-gradient(to right,
+            #df0060,
+            #b10075,
+            #5e0289,
+            #1b008e,
+            #00006b);
+            
+}
+
+/* General Body and HTML styling for full height */
+html,
+body,
+#root {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+    /* Ensure Inter font is applied */
+}
+
+
+/* Text shadow for left column to improve readability on images */
+.login-text-shadow-md {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+/* General button styling adjustments */
+.login-btn {
+    background: linear-gradient(to right,
+            #df0060,
+            #b10075,
+            #5e0289,
+            #1b008e,
+            #00006b);
+    transition: all 0.3s ease;
+}
+
+
+/* login text color change */
+.login-card-title{
+    background: linear-gradient(
+    to right,
+    #df0060,
+    #b10075,
+    #5e0289,
+    #1b008e,
+    #00006b
+);
+-webkit-background-clip: text;
+background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: bold;
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  padding-top: 1em;
+}
+
+.login-logo {
+  height: 200px;
+  width: auto;
+}
+
+.login-gradient-text {
+  background: linear-gradient(to right, #e7008a, #0000b8);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: bold;
+}

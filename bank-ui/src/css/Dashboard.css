@@ -1,0 +1,392 @@
+body {
+    position: relative;
+    overflow-x: hidden;
+    background-color: #ffffff;
+}
+
+body,
+html {
+    height: 100%;
+}
+
+html, body, #root {
+    height: 100%;
+    min-height: 100vh; /* Ensures it covers the full viewport height */
+    background: linear-gradient(
+    to right,
+    #df0060,
+    #b10075,
+    #5e0289,
+    #1b008e,
+    #00006b
+); /* A light grey color, replace with your desired hex, rgb, or named color */
+    margin: 0; /* Remove default browser margins */
+    padding: 0; /* Remove default browser padding */
+    font-family: 'Inter', sans-serif; /* Keep your preferred font */
+}
+
+.nav .open>a,
+.nav .open>a:hover,
+.nav .open>a:focus {
+    background-color: transparent;
+}
+
+/*-------------------------------*/
+/* Wrappers           */
+/*-------------------------------*/
+
+#wrapper {
+    padding-left: 0;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+#wrapper.toggled {
+    padding-left: 220px;
+}
+
+#sidebar-wrapper {
+    z-index: 1000;
+    left: 220px;
+    width: 0;
+    height: 100%;
+    margin-left: -220px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    background: #ffffff;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+#sidebar-wrapper::-webkit-scrollbar {
+    display: none;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+    width: 220px;   
+}
+
+#page-content-wrapper {
+    width: 100%;
+    padding-top: 68px; /* Adjust based on navbar height */
+    flex-grow: 1; /* Allow content to grow and fill space */
+    overflow: hidden; /* Prevent inner scroll unless explicitly defined */
+    display: flex;
+}
+
+#wrapper.toggled #page-content-wrapper {
+    position: static;
+    margin-right: 0;
+}
+
+/*-------------------------------*/
+/* Sidebar nav styles     */
+/*-------------------------------*/
+.bi-bank{
+    color: #ffffff;
+}
+
+.navbar {
+     height: 68px; /* Increased height */
+     position: fixed;
+    width: 100%;
+    z-index: 1030;
+}
+
+.sidebar-nav {
+    position: absolute;
+    top: 0;
+    width: 220px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.sidebar-nav li {
+    position: relative;
+    line-height: 22px;
+    display: block;
+    width: 100%;
+    border-bottom: 1px solid #ccc;
+    font-size: 15px;
+    padding: 12px 20px;
+    transition: background 0.2s ease;
+}
+
+
+.sidebar-nav li a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #000000;
+    text-decoration: none;
+    padding: 0;
+    transition: background-color 0.3s;
+}
+
+.sidebar-nav li a:hover,
+.sidebar-nav li a:active,
+.sidebar-nav li a:focus,
+.sidebar-nav li.open a:hover,
+.sidebar-nav li.open a:active,
+.sidebar-nav li.open a:focus {
+    color: #000000;
+    text-decoration: none;
+    background-color: transparent;
+}
+
+.sidebar-nav li:hover {
+    background-color: #e0e0e0; /* light gray on hover */
+    cursor: pointer;
+}
+
+.sidebar-header {
+    text-align: center;
+    font-size: 20px;
+    position: relative;
+    width: 100%;
+    display: inline-block;
+}
+
+.sidebar-brand {
+    height: 65px;
+    position: relative;
+    background: linear-gradient(
+    to right,
+    #df0060,
+    #b10075,
+    #5e0289,
+    #1b008e,
+    #00006b
+);
+    padding-top: 1em;
+}
+
+.sidebar-brand a {
+    color: #ddd;
+    text-decoration: none;
+}
+
+.sidebar-brand a:hover {
+    color: #fff;
+    text-decoration: none;
+}
+
+.dropdown-header {
+    text-align: center;
+    font-size: 1em;
+    color: #ddd;
+    background: #212531;
+    background: linear-gradient(to right bottom, #2f3441 50%, #212531 50%);
+}
+
+.sidebar-nav .dropdown-menu {
+    position: relative;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    border-radius: 0;
+    border: none;
+    background-color: #222;
+    box-shadow: none;
+}
+
+/* Using show class for dropdown menu visibility similar to Bootstrap */
+.dropdown-menu.show {
+    display: block;
+    /* Make dropdown visible */
+    top: 0;
+}
+
+
+.sidebar-nav li a::after {
+    content: "\203A"; /* Unicode › character */
+    color: #999;
+    font-size: 16px;
+    padding-left: 10px;
+}
+
+
+/*-------------------------------*/
+/* Hamburger-Cross        */
+/*-------------------------------*/
+
+.hamburger {
+    position: fixed;
+    top: 20px;
+    z-index: 1040;
+    display: block;
+    width: 32px;
+    height: 32px;
+    margin-left: 15px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    /* Added cursor for better UX */
+}
+
+.hamburger:hover,
+.hamburger:focus,
+.hamburger:active {
+    outline: none;
+}
+
+.hamburger.is-closed:before {
+    content: '';
+    display: block;
+    width: 100px;
+    font-size: 14px;
+    color: #fff;
+    line-height: 32px;
+    text-align: center;
+    opacity: 0;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    -webkit-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+.hamburger.is-closed:hover:before {
+    opacity: 1;
+    display: block;
+    -webkit-transform: translate3d(-100px, 0, 0);
+    transform: translate3d(-100px, 0, 0);
+    -webkit-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+.hamburger.is-closed .hamb-top,
+.hamburger.is-closed .hamb-middle,
+.hamburger.is-closed .hamb-bottom,
+.hamburger.is-open .hamb-top,
+.hamburger.is-open .hamb-middle,
+.hamburger.is-open .hamb-bottom {
+    position: absolute;
+    left: 0;
+    height: 4px;
+    width: 100%;
+}
+
+.hamburger.is-closed .hamb-top,
+.hamburger.is-closed .hamb-middle,
+.hamburger.is-closed .hamb-bottom {
+    background: linear-gradient(
+    to right,
+    #df0060,
+    #b10075,
+    #5e0289,
+    #1b008e,
+    #00006b
+);
+}
+
+.hamburger.is-closed .hamb-top {
+    top: 5px;
+    -webkit-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+.hamburger.is-closed .hamb-middle {
+    top: 50%;
+    margin-top: -2px;
+}
+
+.hamburger.is-closed .hamb-bottom {
+    bottom: 5px;
+    -webkit-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+.hamburger.is-closed:hover .hamb-top {
+    top: 0;
+    -webkit-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+.hamburger.is-closed:hover .hamb-bottom {
+    bottom: 0;
+    -webkit-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+.hamburger.is-open .hamb-top,
+.hamburger.is-open .hamb-middle,
+.hamburger.is-open .hamb-bottom {
+   background: linear-gradient(
+    to right,
+    #df0060,
+    #b10075,
+    #5e0289,
+    #1b008e,
+    #00006b
+);
+}
+
+.hamburger.is-open .hamb-top,
+.hamburger.is-open .hamb-bottom {
+    top: 50%;
+    margin-top: -2px;
+}
+
+.hamburger.is-open .hamb-top {
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+    -webkit-transition: -webkit-transform .2s cubic-bezier(.73, 1, .28, .08);
+    transition: transform .2s cubic-bezier(.73, 1, .28, .08);
+}
+
+.hamburger.is-open .hamb-middle {
+    display: none;
+}
+
+.hamburger.is-open .hamb-bottom {
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    -webkit-transition: -webkit-transform .2s cubic-bezier(.73, 1, .28, .08);
+    transition: transform .2s cubic-bezier(.73, 1, .28, .08);
+}
+
+.hamburger.is-open:before {
+    content: '';
+    display: block;
+    width: 100px;
+    font-size: 14px;
+    color: #fff;
+    line-height: 32px;
+    text-align: center;
+    opacity: 0;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    -webkit-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+.hamburger.is-open:hover:before {
+    opacity: 1;
+    display: block;
+    -webkit-transform: translate3d(-100px, 0, 0);
+    transform: translate3d(-100px, 0, 0);
+    -webkit-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+    }
+
+/*-------------------------------*/
+/* Overlay           */
+/*-------------------------------*/
+
+.overlay {
+    position: fixed;
+    display: none;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(250, 250, 250, .8);
+    z-index: 1;
+}
