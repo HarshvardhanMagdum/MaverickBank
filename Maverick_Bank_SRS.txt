@@ -1,0 +1,84 @@
+
+Software Requirements Specification (SRS)
+Project: Maverick Bank Management System
+
+1. Introduction
+---------------
+Maverick Bank is a modern digital banking system designed to manage customers, accounts, employees, transactions, and loan operations efficiently. It supports different roles such as Customer, Executive, and Manager with distinct functionalities and permissions.
+
+2. Purpose
+----------
+This document defines the software requirements for the Maverick Bank system. It outlines the features, data structures, and design to be used in development.
+
+3. Scope
+--------
+The system supports:
+- Customer onboarding and login
+- Account management (open, view, close)
+- Beneficiary management
+- Transaction processing (deposit, withdraw, transfer)
+- Loan applications, tracking, and repayment
+- Employee and Manager interfaces
+- Role-based authentication
+
+4. Users and Roles
+------------------
+- Customer
+- Executive (Bank Employee)
+- Manager (Branch Manager)
+- Admin (optional for future)
+
+5. Functional Requirements
+--------------------------
+- Register/Login users via user_info
+- Link each user to customer, executive, or manager role
+- Allow customers to manage their accounts and perform transactions
+- Support employees in viewing customer/account info
+- Allow managers to track loans and branch performance
+
+6. Data Model Summary
+---------------------
+Total Tables: 13  
+Total Relationships (FKs): 16  
+
+| Table              | Primary Key | Foreign Keys                                                                                      |
+|-------------------|-------------|----------------------------------------------------------------------------------------------------|
+| user_info         | id          | —                                                                                                  |
+| customer          | id          | user_id → user_info.id                                                                             |
+| executive         | id          | user_id → user_info.id, branch_id → branch.id                                                      |
+| manager           | id          | user_id → user_info.id                                                                             |
+| branch            | id          | —                                                                                                  |
+| account_type      | id          | —                                                                                                  |
+| account           | id          | account_type_id, branch_id, customer_id                                                            |
+| beneficiary       | id          | customer_id                                                                                        |
+| transaction       | id          | account_id                                                                                         |
+| loan_details      | id          | —                                                                                                  |
+| loan_application  | id          | account_id, loan_details_id                                                                        |
+| loan              | id          | loan_application_id                                                                                |
+| loan_repayment    | id          | loan_id                                                                                            |
+
+7. Non-Functional Requirements
+------------------------------
+- Secure password handling and JWT-based authentication
+- Responsive React frontend
+- RESTful Spring Boot backend
+- Bootstrap UI components
+
+8. Technology Stack
+-------------------
+- Frontend: React, Bootstrap
+- Backend: Spring Boot (Java)
+- Database: MySQL
+- Authentication: JWT (JSON Web Tokens)
+
+9. Future Enhancements
+----------------------
+- Admin portal for system configuration
+- SMS/email notifications for transactions
+- Loan eligibility calculator
+- Credit scoring integration
+- Audit trail and logs
+
+10. Conclusion
+--------------
+The Maverick Bank system is built with modular architecture supporting customer-first banking operations, ensuring security, scalability, and performance.
