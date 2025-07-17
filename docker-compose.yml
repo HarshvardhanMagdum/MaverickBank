@@ -6,8 +6,8 @@ services:
     image: mysql:8.0 # Using mysql:8.0 as per your friend's example, but specific version is better
     container_name: bank_mysql_container # Explicit container name for easier identification
     environment:
-      MYSQL_ROOT_PASSWORD: MySQL_566@Sree # Your project's root password
-      MYSQL_DATABASE: bank_demo_db # Your project's database name
+      MYSQL_ROOT_PASSWORD: harshsql # Your project's root password
+      MYSQL_DATABASE: bankDemo # Your project's database name
       # REMOVED: MYSQL_USER: root # This is not needed when MYSQL_ROOT_PASSWORD is set
     ports:
       - "3307:3306" # Mapped host port 3307 to container port 3306 to avoid conflict
@@ -32,9 +32,9 @@ services:
     environment:
       # These environment variables will override application.properties for database connection
       # This is often preferred in Docker for flexibility and runtime configuration
-      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/bank_demo_db?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/bankDemo?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true
       SPRING_DATASOURCE_USERNAME: root
-      SPRING_DATASOURCE_PASSWORD: MySQL_566@Sree
+      SPRING_DATASOURCE_PASSWORD: harshsql
       SPRING_JPA_HIBERNATE_DDL_AUTO: update
     depends_on:
       db:
